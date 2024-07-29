@@ -36,10 +36,9 @@
       <%- include('partials/navbar.ejs') %>
       
       <div class="main-content container px-5">
-        <form action="/ingredient-search" method="POST" class="pt-5">
-          <label for="search_name">Search:</label>
+        <form action="/search" method="POST" class="d-flex gap-2 py-5">
           <input type="text" id="search_name" name="search_name" required />
-          <input type="submit" value="Submit" class="btn btn-primary" />
+          <input type="submit" value="Search" class="btn btn-primary" />
         </form>
 
         <% if (locals.ingredientInfo) { %>
