@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/default-head-config.ejs') %>
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/button-menu.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/item-list.css" />
+    <style>
+      .ingredient {
+        display: flex;
+        width: 300px;
+        height: auto;
+        text-align: center;
+      }
+
+      .ingredient img {
+        height: 100%;
+        width: auto;
+      }
+
+      .button-menu {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      label {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+      
+      <div class="main-content container px-5">
+        <form action="/ingredient-search" method="POST" class="pt-5">
+          <label for="search_name">Search:</label>
+          <input type="text" id="search_name" name="search_name" required />
+          <input type="submit" value="Submit" class="btn btn-primary" />
+        </form>
+
+        <% if (locals.ingredientInfo) { %>
+          <div class="row ingredient py-5 mx-auto">
+            <img src="<%= "https://www.thecocktaildb.com/images/ingredients/" +
+            ingredientInfo.strIngredient + ".png" %>" alt="<%
+            ingredientInfo.strIngredient %>">
+            <h2><%= ingredientInfo.strIngredient %></h2>
+          </div>
+        <% } %>
+       
+        <% if (locals.ingredientInfo) { %>
+        <!-- filtered_drinks_search -->
+          <div class="container p-0">
+            <div class="row item-menu g-0 mx-auto">
+              <% for (let obj of filtered_drinks_search) { %>
+                <div class="item">
+                  <a href="<%= "/drink?idDrink=" + obj.idDrink %>"><img src="<%= obj.strDrinkThumb %>" alt="<%= obj.strDrink %>" /></a>
+                  <p id="item-name"><%= obj.strDrink %></p>
+                </div>
+              <% } %>
+            </div>
+          </div>
+          <% } %>
+
+      <%- include('partials/button-menu.ejs') %>
+      <%- include('partials/footer.ejs') %>
+    </main>
+  </body>
+</html>

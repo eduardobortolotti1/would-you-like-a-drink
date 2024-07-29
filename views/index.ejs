@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/default-head-config.ejs') %>
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/button-menu.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <style>
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+
+      <div class="main-content container px-5">
+        <div class="introduction">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <h1>Would you like a drink?</h1>
+              <p>
+                Welcome! This website uses the
+                <span
+                  ><a href="https://www.thecocktaildb.com/"
+                    >TheCockTailDB's</a
+                  ></span
+                >
+                API to allow the user to show random drinks, search them, and
+                other options. Discover drinks from around the world. Search,
+                explore, and enjoy.
+              </p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <img
+                src="./images/bartender.svg"
+                alt="bartender"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+
+        <%- include('partials/button-menu.ejs') %>
+        <%- include('partials/footer.ejs')  %>
+      </div>
+    </main>
+  </body>
+</html>

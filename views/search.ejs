@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/default-head-config.ejs') %>
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/button-menu.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/item-list.css" />
+    <style>
+      form label {
+        color: white;
+        font-size: 1.1rem;
+      }
+      form input {
+        max-width: 350px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+
+      <div class="main-content container px-5">
+        <form action="/search" method="POST" class="pt-5">
+          <label for="search_name">Search:</label>
+          <input type="text" id="search_name" name="search_name" required />
+          <input type="submit" value="Submit" class="btn btn-primary" />
+        </form>
+
+        <!-- DRINK SEARCH SECTION -->
+        <% if (locals.searchData && locals.searchData.drinks != null ) { %>
+          <h2>Search results for: <%= search_name %></h2>
+          <div class="container p-0">
+            <div class="row item-menu g-0">
+              <% for (drink of searchData.drinks) { %>
+                <div class="item">
+                  <a href="<%= "/drink?idDrink=" + drink.idDrink %>"
+                    ><img
+                      src="<%= drink.strDrinkThumb %>"
+                      alt="<%= drink.strDrink %>"
+                  /></a>
+                  <p id="item-name"><%= drink.strDrink %></p>
+                </div>
+              <% } %>
+            </div>
+          </div>
+          <% } %>
+        <%- include('partials/button-menu.ejs') %>
+        <%- include('partials/footer.ejs') %>
+      </div>
+    </main>
+  </body>
+</html>
