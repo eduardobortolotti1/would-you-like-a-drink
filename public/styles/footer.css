@@ -1,4 +1,4 @@
-footer a {
-  color: white !important;
+footer * {
+  color: white;
   font-size: 1rem;
 }
